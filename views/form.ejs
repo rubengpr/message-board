@@ -1,0 +1,22 @@
+<html>
+    <head>
+        <title>Form submission</title>
+        <link rel="stylesheet" href="styles.css">
+    </head>
+    <body>
+        <form class="form-wrapper" method="POST" action="/new">
+            <h1 class="form-heading">Submit your message</h1>
+            <div class="input-box">
+                <div class="form-label-input">
+                    <label class="form-label" for="user">User</label>
+                    <input type="text" name="messageUser" id="user">
+                </div>
+                <div class="form-label-input">
+                    <label class="form-label" for="text">Message</label>
+                    <input type="text" name="messageText" id="text">
+                </div>
+            </div>
+            <button class="button-submit" type="submit">Submit</button>
+         </form>         
+    </body>
+</html>
