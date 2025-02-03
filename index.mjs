@@ -1,6 +1,12 @@
-import express, { static as serveStatic, urlencoded } from 'express'; //Import express library
-const app = express(); //Creates an instance of express() and saves it in app variable
-import { join } from "node:path";
+import express, { static as serveStatic, urlencoded } from 'express'; // Import express library
+import { join, dirname } from 'node:path';
+import { fileURLToPath } from 'url';
+
+// Convert __dirname using import.meta.url
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
+
+const app = express(); // Creates an instance of express() and saves it in app variable
 
 app.set("views", join(__dirname, "views"));
 app.set("view engine", "ejs");
@@ -10,24 +16,18 @@ app.use(serveStatic(assetsPath));
 
 app.use(urlencoded({ extended: true }));
 
+
 const date = new Date();
 const day = date.getDate();
 const month = date.getMonth() + 1;
 const formattedDate = day + '/' + month
 
-app.get('/', (req,res) => {
-    res.render('index', { messages: messages });
-});
 
-app.get('/new', (req, res) => {
-    res.render('form');
-})
+import indexRouter from './routes/indexRouter.mjs'
+import newRouter from './routes/newRouter.mjs'
 
-app.post('/new', (req,res) => {
-    const { messageText, messageUser } = req.body;
-    messages.push({ text: messageText, user: messageUser, added: formattedDate });
-    res.redirect("/");
-});
+app.use('/', indexRouter);
+app.use('/new', newRouter);
 
 const PORT = 3000;
 app.listen(PORT, () => {
