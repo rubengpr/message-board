@@ -1,14 +1,14 @@
-const express = require('express'); //Import express library
+import express, { static as serveStatic, urlencoded } from 'express'; //Import express library
 const app = express(); //Creates an instance of express() and saves it in app variable
-const path = require("node:path");
+import { join } from "node:path";
 
-app.set("views", path.join(__dirname, "views"));
+app.set("views", join(__dirname, "views"));
 app.set("view engine", "ejs");
 
-const assetsPath = path.join(__dirname, "public");
-app.use(express.static(assetsPath));
+const assetsPath = join(__dirname, "public");
+app.use(serveStatic(assetsPath));
 
-app.use(express.urlencoded({ extended: true }));
+app.use(urlencoded({ extended: true }));
 
 const date = new Date();
 const day = date.getDate();
