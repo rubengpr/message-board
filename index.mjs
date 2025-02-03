@@ -15,20 +15,6 @@ const day = date.getDate();
 const month = date.getMonth() + 1;
 const formattedDate = day + '/' + month
 
-const messages = [
-    {
-      text: "Hi there!",
-      user: "Amando",
-      added: formattedDate
-    },
-    {
-      text: "Hello World!",
-      user: "Charles",
-      added: formattedDate
-    }
-  ];
-  
-
 app.get('/', (req,res) => {
     res.render('index', { messages: messages });
 });
