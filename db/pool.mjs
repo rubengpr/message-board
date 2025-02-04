@@ -1,5 +1,6 @@
 import 'dotenv/config';
-import { Pool } from "pg";
+import pg from 'pg'
+const { Pool, Client } = pg
 
 // Again, this should be read from an environment variable
 export default new Pool({

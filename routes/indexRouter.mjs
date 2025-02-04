@@ -1,8 +1,8 @@
 import { Router } from 'express';
+import { getMessages } from '../controllers/indexController.mjs'
 
 const indexRouter = Router();
-export default indexRouter;
 
-indexRouter.get('/', (req, res) => {
-    res.render('index');
-});
+indexRouter.get('/', getMessages);
+
+export default indexRouter;
