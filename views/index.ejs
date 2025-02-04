@@ -4,9 +4,24 @@
         <link rel="stylesheet" href="/styles.css">
     </head>
     <body>
-        <h1>Message board</h1>
-        <p><%= usernameMessages %></p>
-        <p><%= coreMessages %></p>
-        <a href="/new">New message</a>
+        <div class="index-header">
+            <h1>Message board</h1>
+        </div>
+        
+        <div class="messages-container">
+            <% messages.forEach(function(message) { %>
+                <div class="message-box">
+                    <div class="message-box-header">
+                        <p class="message-text"><%= message.message %></p>
+                        <p class="message-date"><%= message.created_at %></p>
+                    </div>
+                    <p class="message-user"><%= message.username %></p>
+                </div>
+            <% }); %>
+        </div>
+
+        <button class="button-primary">
+            <a href="/new">New message</a>
+        </button>
     </body>
 </html>

@@ -16,13 +16,6 @@ app.use(serveStatic(assetsPath));
 
 app.use(urlencoded({ extended: true }));
 
-
-const date = new Date();
-const day = date.getDate();
-const month = date.getMonth() + 1;
-const formattedDate = day + '/' + month
-
-
 import indexRouter from './routes/indexRouter.mjs'
 import newRouter from './routes/newRouter.mjs'
 
