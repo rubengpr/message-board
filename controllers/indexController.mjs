@@ -1,4 +1,4 @@
-import { getAllMessages } from '../db/queries.mjs'
+import { getAllMessages } from '../db/queries.mjs';
 
 async function getMessages(req, res) {
     const messages = await getAllMessages();
